@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="WP5App"> 
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="icon" type="image/png" href="images/wikirate_logo.png" />
+
+  <!-- Site Properities -->
+  <title>Wikirate :: WP5 Sandbox</title>
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
+  
+  <link rel="stylesheet" type="text/css" href="semantic-ui/css/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+  <script src="semantic-ui/javascript/semantic.min.js"></script>
+  <script src="main.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.min.js"></script>
+  <script src="appCtrl.js"></script>
+	
+
+</head>
+<body id="home">
+
+
+	<div data-ng-controller="Statistics" class="ui large inverted vertical sidebar menu">
+		<div class="item">
+		  <b>Indexed WAGNs</b> <span data-ng-show="ready" class="ui black label">1</span>
+		  <div class="menu">
+		    <a class="item" href="http://www.wikirate.org">
+		      www.wikirate.org
+		    </a>
+		  </div>
+		</div>
+
+		<div class="item">
+		  <b>Monitoring sources</b> <span data-ng-show="ready" class="ui black label">{{statistics.sources+statistics.rss+statistics.keywords}}</span>
+		  <div class="menu">
+		    <a class="item">Social streams <span data-ng-show="ready" class="ui label">{{statistics.sources}}</span></a>
+		    <a class="item">RSS feeds <span data-ng-show="ready" class="ui label">{{statistics.rss}}</span></a>
+		    <a class="item">Keywords <span data-ng-show="ready" class="ui label">{{statistics.keywords}}</span></a>
+		  </div>
+		</div>
+
+		<div class="item">
+		  <b>Indexed Items</b> <span data-ng-show="ready" class="ui black label">{{statistics.items}}</span>
+		  <div class="menu">
+		    <a class="item">
+		      Webpages <span data-ng-show="ready" class="ui label">{{statistics.webpages}}</span>
+		    </a>
+		    <a class="item">
+		      Media <span data-ng-show="ready" class="ui red label">{{statistics.media}}</span>
+		    </a>        
+		    <a class="item">
+		      Stream Users <span data-ng-show="ready" class="ui red label">{{statistics.streamusers}}</span>
+		    </a>        
+		  </div>
+		</div>
+
+		
+		<p style="text-align: center;"><img data-ng-hide="ready" src="images/loading.gif" alt="loading indicator" /></p>
+		
+	</div>
+
+	<div data-ng-controller="ExtractController"> 
+	  <div class="ui inverted page grid masthead segment">
+	    <div class="column">
+	      <div class="inverted secondary pointing ui menu">
+	        <div class="ui black mini launch button">
+	          <i class="list layout icon"></i> Statistics
+	        </div>
+
+	        <a class="header item floated right about">ABOUT
+	        </a>
+
+<!-- 	        <div class="right menu">
+	          <div class="ui top right pointing mobile dropdown link item">
+	            Menu
+	            <i class="dropdown icon"></i>
+	            <div class="menu">
+	              <a href="http://160.40.50./rockmongo" target="_blank" class="item">MongoDB</a>
+	              <a href=class="item">Solr</a>
+	              <a class="item">VIS</a>
+	            </div>
+	          </div>
+	          <div class="ui dropdown link item">
+	            MongoDB
+	            <i class="dropdown icon"></i>
+	            <div class="menu">
+	              <a href="http://160.40.50./rockmongo" target="_blank" class="item">Wikirate</a>
+	            </div>
+	          </div>
+	          <a class="item">Solr</a>
+	          <a class="item">Visual Indexing Service</a>
+	        </div>
+ -->	        
+	      </div>
+	 
+	      <img src="images/sandbox.png" alt="A sandbox with an umbrella inside" class="ui medium image">
+	      <div class="ui hidden transition information">
+	        <h1 class="ui inverted header">
+	          Wikirate WP5 sandbox <span class="ui circular label">0.15</span>
+	        </h1>
+	        <p>
+	            <span class="ui teal label">Near Duplicate Detection</span>
+	            <span class="ui teal label">Media Items</span>
+	            <span class="ui teal label">Keywords / Textual</span>
+	            <img data-ng-hide="indicatorStopped" src="images/loading.gif" alt="loading indicator" />
+	        </p>
+
+					<div class="ui form">
+		        <div class="ui fluid big icon input field">
+		          <input name="url" type="text" data-ng-model="formData.url" title="Paste any url" placeholder="Paste any URL...">
+		          <i data-ng-click="getItems()" class="search icon"></i>
+		        </div>
+					</div>
+
+	      </div>
+	    </div>
+	  </div>
+
+
+	  <div id="menu-one" class="ui celled grid">
+	    <div class="row">
+	    <div class="eight wide middle column">
+	      <h2 class="ui header black center aligned"><i class="black url icon"></i> Extracted content from URL</h2>
+	      <div class="ui divider"></div>
+
+	      <div class="ui tabular filter menu">
+	        <a class="active item" data-tab="images">Images</a>
+	        <a class="item" data-tab="text">Keywords</a>
+	      </div>
+	      <div class="ui divided inbox selection list active tab" data-tab="images">
+
+					<div class="ui small images">
+						<a><img data-ng-click="nearMedia(img.src)" class="rounded ui image extract" data-ng-repeat="img in items.images" ng-src="{{img.src}}" /></a>
+					</div>
+
+					<div class="ui icon message">
+					  <i class="info icon"></i>
+						<div class="content">			  
+						  <div class="header">
+						    Extracted images from URL appears in this panel
+						  </div>
+					  </div>
+					</div>
+
+	      </div>
+
+	      <div class="ui divided inbox selection list tab" data-tab="text">
+					
+					<a data-ng-show="ready"><span class="ui red label" data-ng-click="nearKeyword(items.title)">{{items.title}}</span></a>
+
+					<div class="ui icon message">
+					  <i class="info icon"></i>
+						<div class="content">			  
+						  <div class="header">
+						    Extracted text content and keywords from URL appears in this panel
+						  </div>
+						  <p>...or alternatively you can try manually</p>
+							<div class="ui fluid action input">
+							  <input data-ng-model="userKeyword" placeholder="Enter any phrase or keyword" type="text">
+							  <div data-ng-click="nearKeyword(userKeyword)" class="ui red button">Find similar</div>
+							</div>						  
+
+					  </div>
+					</div>
+
+
+	      </div>
+
+
+	    </div>
+	    <div class="eight wide right column">
+	      <h2 class="ui header black center aligned"><i class="black archive icon"></i> Similar sources found</h2>
+	      <div class="ui divider"></div>
+				<div style="text-align:center"><img data-ng-hide="searchIndicatorStopped" src="images/search_loading.gif" alt="loading indicator" /></div>
+					
+					<div class="mediaresults">
+						<div class="ui divided selection list">
+						  <div class="item" data-ng-repeat="item in media">
+						  	<div class="right floated tiny inversed ui button"><a target="_blank" href="http://www.wikirate.org/{{item.name}}">See relative claim</a></div>							    
+						    <img class="ui small rounded image" data-ng-src="{{item.url}}">
+						    <div class="content">
+						      <div class="header">{{item.claimId}}</div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+
+					<div class="keywordsresults">
+						<div class="ui divided selection list">
+						  <div class="item" data-ng-repeat="item in keywords">
+							<div class="right floated tiny inversed ui button"><a target="_blank" href="http://www.wikirate.org/{{item.name}}">See relative claim/source</a></div>							    
+						    <i class="archive icon"></i>
+						    <div class="content">
+						      <div class="header"><span class="ui rounded label">{{item.id}}</span> {{item.title}}</div>
+							  <p>
+							  <div class="ui small images">
+							  	<img class="rounded ui image" data-ng-repeat="img in item.images" ng-src="{{img.url}}" />
+							  </div>						      
+							  </p>
+						      Original URL: <a target="_blank" href="{{item.url}}">{{item.url}}</a><br />
+						    </div>
+						  </div>
+						</div>
+					</div>
+		
+
+					<div class="ui icon message">
+					  <i class="info icon"></i>
+						<div class="content">			 
+						  <div class="header">
+						    Sources/Claims similar to the selected URL appears in this panel
+						  </div>
+						  <p>Demonstrates what the system will propose to users when adding a new source/claim...</p>
+					  </div>
+					</div>
+
+	    </div>
+	    </div>
+	  </div>
+
+	</div> <!-- controller -->
+
+
+
+
+	<div id="menu-two" class="ui inverted grid segment">
+
+	    <div class="row">
+	      <div class="column">
+			<div class="ui inverted secondary pointing menu">
+			  <div class="right menu">
+			  <a class="active item" data-tab="wagn">
+			    <i class="archive icon"></i> Sources/Claims
+			  </a>
+			  <a class="item" data-tab="monitoring">
+			    <i class="unhide icon"></i> Monitoring
+			  </a>
+			  </div>
+			</div>	      
+	      </div>
+	    </div>
+
+	
+
+	<div class="ui active tab" data-tab="wagn">
+	  <div data-ng-controller="WAGNSource" class="ui inverted grid page">
+	    <div class="row">
+	      <div class="column">
+	        <h1 class="center aligned ui header">
+	          Available Sources / Claims
+	        </h1>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="sixteen wide column">
+	        <h2 class="ui header"><span data-ng-show="ready" class="ui header"><span class="ui black label">{{sum}}</span></span> http://www.wikirate.org</h2>
+			<div data-ng-show="ready">
+				<button data-ng-disabled="currentPage == 0" data-ng-click="currentPage=currentPage-1">
+			        <i class="left icon"></i>
+			    </button>
+			    {{currentPage+1}}/{{numberOfPages()}}
+			    <button data-ng-disabled="currentPage >= wagnSource.card.value.length/pageSize - 1" data-ng-click="currentPage=currentPage+1">
+			        <i class="right icon"></i>
+			    </button>
+		    </div>
+	        <div class="ui inverted section divider"></div>
+	        <div style="text-align: center;">
+	        	<img data-ng-hide="ready" src="images/loading.gif" alt="loading indicator" />
+	        </div>
+
+	        <div class="ui inverted animated selection list">
+		      <div class="item" data-ng-repeat="value in wagnSource.card.value | startFrom:currentPage*pageSize | limitTo:pageSize">
+	            <div class="left floated" style="width:85%;"><a href="{{value.content}}" target="_blank">{{value.content}}</a></div>
+	            <div class="right floated" style="width:10%;text-align:right;">{{value.id}}</div>
+	          </div>
+	        </div>
+
+	      </div>
+	    </div>
+
+	  </div>
+  	</div>
+
+	<div class="ui tab" data-tab="monitoring">
+	  <div data-ng-controller="ExternalSource" class="ui inverted stackable grid page">
+
+		<!-- Delete source confirmation dialog-->
+		<div class="ui delete dialog modal">
+	  	  <div class="ui inverted dimmer">
+			<div class="ui text loader">Please wait</div>
+		  </div>		
+		  <i class="close icon"></i>
+		  <div class="header">
+		    Delete Confirmation
+		  </div>
+		  <div class="content">
+		  	<p>Do you really want to delete external source:<br /><strong><i class="{{type|lowercase}} icon"></i> {{source}}</strong></p>
+		  </div>
+		  <div class="actions">
+		    <div class="ui red ok button">Delete</div>
+		    <div class="ui cancel button">Cancel</div>
+		  </div>
+		</div>
+
+		<!-- Add source dialog-->
+		<div class="ui add dialog modal">
+	  	  <div class="ui inverted dimmer">
+			<div class="ui text loader">Please wait</div>
+		  </div>			
+		  <i class="close icon"></i>
+		  <div class="header">
+		    Add New Source
+		  </div>
+		  <div class="content">
+		  	
+
+
+			<div class="ui addnew form">
+			  <div class="grouped inline fields">
+			    <div class="field">
+			      <div class="ui radio checkbox">
+			        <input id="Facebook" value="Facebook" checked="checked" type="radio" data-ng-model="formData.type">
+			        <label for="Facebook">Facebook</label>
+			      </div>
+			    </div>
+			    <div class="field">
+			      <div class="ui radio checkbox">
+			        <input id="Twitter" value="Twitter" type="radio" data-ng-model="formData.type">
+			        <label for="Twitter">Twitter</label>
+			      </div>
+			    </div>
+			    <div class="field">
+			      <div class="ui radio checkbox">
+			        <input id="Rss" value="Rss" type="radio" data-ng-model="formData.type">
+			        <label for="Rss">RSS</label>
+			      </div>
+			    </div>
+			    <div class="field">
+			      <div class="ui radio checkbox disabled">
+			        <input id="Topic" value="Topic" type="radio" data-ng-model="formData.type">
+			        <label for="Topic">Topic</label>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="field">
+			      <label>URL</label>
+			      <input name="url" type="text" data-ng-model="formData.url">
+			  </div>
+
+			</div>
+
+
+
+
+		   
+		  </div>
+		  <div class="actions">
+		    <div class="ui green ok button">Add source</div>
+		    <div class="ui cancel button">Cancel</div>
+		  </div>
+		</div>
+
+
+
+
+	    <div class="row">
+	      <div class="column">
+	        <h1 class="center aligned ui header">
+	          Monitoring External Sources
+	        </h1>
+	      </div>
+	    </div>
+
+	    <div class="row">
+	      <div class="sixteen wide column">
+	        <div style="text-align: center;">
+	        	<img data-ng-hide="listSourcesReady" src="images/loading.gif" alt="loading indicator" />
+	        </div>
+
+
+			<table class="ui table segment">
+			  <thead>
+			    <tr>
+			    	<th class="one wide" style="text-align: center;">#</th>
+			    	<th class="one wide" style="text-align: center;">Type</th>
+			    	<th class="thirteen wide">Source</th>
+			    	<th class="one wide" style="text-align: center;">&nbsp;</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+
+			    <tr class="item" data-ng-repeat="item in externalSources.sources">
+			      <td style="text-align: center;">{{$index + 1}}</td>
+			      <td style="text-align: center;"><i class="{{item.type|lowercase}} icon"></i></td>
+			      <td>{{item.source}}</td>
+			      <td style="text-align: center;"><div class="ui icon button" data-ng-click="deleteExternalSourceModal(item.type, item.source, $index)"><i class="trash icon"></i></div></td>
+			    </tr>
+
+			  </tbody>
+			  <tfoot>
+			    <tr><th colspan="4">
+			      <div class="ui blue labeled icon button" data-ng-click="addExternalSourceModal()"><i class="plus icon"></i> Add Source</div>
+			    </th>
+			  </tr></tfoot>
+			</table>
+
+
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
+
+
+
+
+
+
+  	  <div style="height: 50px;"></div>
+	</div>
+
+
+
+
+
+  <div class="ui inverted teal page grid segment">
+    <div class="sixteen wide column">
+      <div class="ui two column stackable grid">
+        <div class="column">
+          <p>WP5: Scalable Analytics for User Contributions<br />
+          &copy; 2014, Sandbox for Wikirate by <abbr title="Centre for Research and Technology - Hellas">CERTH</abbr> / <abbr title="Information Technologies Institute">ITI</abbr></p>
+        </div>
+        <div class="right floated aligned column">
+					<img src="images/wikirate_wp5.png" alt="The logo of wikirate project" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About WP5 sandbox -->
+	<div class="ui about modal">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    About Wikirate WP5 Sandbox
+	  </div>
+	  <div class="content">
+	  	<span class="ui circular black label">version 0.16</span>
+	  	<p>A testing platform to ensure the proper functionality of WP5 services prior to WAGN incorporation by CERTH/ITI</p>
+	  </div>
+	  <div class="actions">
+	    <div class="ui green button">OK</div>
+	  </div>
+	</div>
+
+
+
+
+</body>
+
+</html>
