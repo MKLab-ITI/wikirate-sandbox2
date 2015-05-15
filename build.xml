@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="automated-build-tasks" default="init" basedir=".">
+    
+
+    <property name="src" value="."/>
+    <property name="dst" value="/var/www/wikirate-sandbox2" />
+    
+
+    <target name="_copy_all" description="Copies files to dst project.">
+        <echo message="Copying site files: ${src} --> ${dst}" />
+        <copy todir="${dst}">
+            <fileset dir="${src}">
+                <exclude name="**/*.git/"/>
+            </fileset>
+        </copy>
+        
+    </target>
+
+    <target name="build" depends="_copy_all"
+            description="Copies to appropriate directories in Joomla site" >
+    </target>   
+
+</project>

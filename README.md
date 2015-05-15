@@ -27,3 +27,10 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+
+### Useful links
+
+* http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php
+* http://160.40.51.30:8080/WikiRateAPI/HumanRightsArticles?ReferredCompany=552fd5ddebd4f7d398f545c8&Category=Labour
+* http://160.40.51.30:8080/WikiRateAPI/Snippets?fieldName=Company_name&fieldValue=Siemens
+

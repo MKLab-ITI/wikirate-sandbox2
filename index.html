@@ -20,21 +20,22 @@
   <script src="main.js"></script>
 
   
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.min.js"></script>
-  <script src="appCtrl.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="app.js"></script>
 	
 
 </head>
 <body id="home">
 
 
-	<div data-ng-controller="ExtractController"> 
+	<div data-ng-controller="CompanyController as company"> 
 	  <div class="ui inverted page grid masthead segment">
 	    <div class="column">
 	      <div class="inverted secondary pointing ui menu">
 	      	<span class="ui teal tag label">Source recommendations</span>
 	      	<span class="ui red tag label">business-humanrights.org</span>
-	        <a class="header item floated right about">GRAPH VISUALIZATION</a>
+	        <a class="header item floated right about">VISUALISATIONS</a>
 
 <!-- 	        <div class="right menu">
 	          <div class="ui top right pointing mobile dropdown link item">
@@ -71,15 +72,15 @@
 			  <div class="two fields">
 			    <div class="field">
 			      <label>Company</label>
-			      <input data-ng-model="formData.company" name="company" placeholder="Type a company name" type="text">
+			      <input data-ng-model="company.formData.input_company" name="company" placeholder="Type a company name" type="text">
 			    </div>
 			    <div class="field">
 			      <label>Topic</label>
-			      <input data-ng-model="formData.topic" name="topic" placeholder="Type a topic" type="text">
+			      <input data-ng-model="company.formData.input_topic" name="topic" placeholder="Type a topic" type="text">
 			    </div>
 			  </div>
-			  <div class="positive ui button" data-ng-click="getItems()">Get recommendations</div>
-			  <img data-ng-hide="indicatorStopped" src="images/loading.gif" alt="loading indicator" />
+			  <div class="positive ui button" data-ng-click="company.getItems()">Get recommendations</div>
+			  <img data-ng-hide="company.indicatorStopped" src="images/loading.gif" alt="loading indicator" />
 			</div>
 
 
@@ -93,8 +94,10 @@
 	    <div class="eight wide middle column">
 	      <h2 class="ui header black center aligned"><i class="black url icon"></i> Matching companies</h2>
 	      <div class="ui divider"></div>
+	      
+	      <p data-ng-repeat="item in company.items">{{item.Company_name}}</p>
 
-	      <div class="ui icon message">
+	      <div class="ui icon message" data-ng-show="company.items.length == 0">
 	        <i class="info icon"></i>
 	      	<div class="content">			  
 	      	  <div class="header">
@@ -106,49 +109,49 @@
 
 	    </div>
 	    <div class="eight wide right column">
-	      <h2 class="ui header black center aligned"><i class="black archive icon"></i> Recommended sources</h2>
+	      <h2 class="ui header black center aligned"><i class="black archive icon"></i> Recommended sources (company + source)</h2>
 	      <div class="ui divider"></div>
-				<div style="text-align:center"><img data-ng-hide="searchIndicatorStopped" src="images/search_loading.gif" alt="loading indicator" /></div>
-					
-					<div class="mediaresults">
-						<div class="ui divided selection list">
-						  <div class="item" data-ng-repeat="item in media">
-						  	<div class="right floated tiny inversed ui button"><a target="_blank" href="http://www.wikirate.org/{{item.name}}">See relative claim</a></div>							    
-						    <img class="ui small rounded image" data-ng-src="{{item.url}}">
-						    <div class="content">
-						      <div class="header">{{item.claimId}}</div>
-						    </div>
-						  </div>
-						</div>
-					</div>
 
-					<div class="keywordsresults">
-						<div class="ui divided selection list">
-						  <div class="item" data-ng-repeat="item in keywords">
-							<div class="right floated tiny inversed ui button"><a target="_blank" href="http://www.wikirate.org/{{item.name}}">See relative claim/source</a></div>							    
-						    <i class="archive icon"></i>
-						    <div class="content">
-						      <div class="header"><span class="ui rounded label">{{item.id}}</span> {{item.title}}</div>
-							  <p>
-							  <div class="ui small images">
-							  	<img class="rounded ui image" data-ng-repeat="img in item.images" ng-src="{{img.url}}" />
-							  </div>						      
-							  </p>
-						      Original URL: <a target="_blank" href="{{item.url}}">{{item.url}}</a><br />
-						    </div>
-						  </div>
-						</div>
-					</div>
-		
-
-					<div class="ui icon message">
-					  <i class="info icon"></i>
-						<div class="content">			 
-						  <div class="header">
-						    Recommended sources appear in this panel
-						  </div>
+<!-- 				<div style="text-align:center"><img data-ng-hide="searchIndicatorStopped" src="images/search_loading.gif" alt="loading indicator" /></div>
+				<div class="mediaresults">
+					<div class="ui divided selection list">
+					  <div class="item" data-ng-repeat="item in media">
+					  	<div class="right floated tiny inversed ui button"><a target="_blank" href="http://www.wikirate.org/{{item.name}}">See relative claim</a></div>							    
+					    <img class="ui small rounded image" data-ng-src="{{item.url}}">
+					    <div class="content">
+					      <div class="header">{{item.claimId}}</div>
+					    </div>
 					  </div>
 					</div>
+				</div>
+
+				<div class="keywordsresults">
+					<div class="ui divided selection list">
+					  <div class="item" data-ng-repeat="item in keywords">
+						<div class="right floated tiny inversed ui button"><a target="_blank" href="http://www.wikirate.org/{{item.name}}">See relative claim/source</a></div>							    
+					    <i class="archive icon"></i>
+					    <div class="content">
+					      <div class="header"><span class="ui rounded label">{{item.id}}</span> {{item.title}}</div>
+						  <p>
+						  <div class="ui small images">
+						  	<img class="rounded ui image" data-ng-repeat="img in item.images" ng-src="{{img.url}}" />
+						  </div>						      
+						  </p>
+					      Original URL: <a target="_blank" href="{{item.url}}">{{item.url}}</a><br />
+					    </div>
+					  </div>
+					</div>
+				</div>
+ -->	
+
+				<div class="ui icon message">
+				  <i class="info icon"></i>
+					<div class="content">			 
+					  <div class="header">
+					    Recommended sources appear in this panel
+					  </div>
+				  </div>
+				</div>
 
 	    </div>
 	    </div>
