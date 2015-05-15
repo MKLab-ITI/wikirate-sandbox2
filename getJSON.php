@@ -2,13 +2,23 @@
 	//make this more secure... AFTER the review meeting ;)
 	
 	header('content-type: application/json; charset=utf-8');
+
 	//$server = 'http://160.40.50.207/wikirate/';
-	$server = 'http://160.40.50.223/wikirate-sandbox/api/index.php/';
+	//$server = 'http://160.40.50.223/wikirate-sandbox/api/index.php/';
+	$server = 'http://160.40.51.30:8080/WikiRateAPI/';
+
+
+//http://160.40.51.30:8080/WikiRateAPI/Companies?fieldName=Company_name&fieldValue=Siemens
+
+
 	$action = array_key_exists('action', $_REQUEST) 
 	        ? $_REQUEST['action'] 
 	        : null;
 
 	switch ($action) {
+		case 'recommendations':
+			$url = $server . 'Companies?fieldName=Company_name&fieldValue='.$_REQUEST['company'];
+			break;
 		case 'statistics':
 			$url = $server . 'statistics';
 			break;

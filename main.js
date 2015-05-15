@@ -1,5 +1,5 @@
-$(document)
-  .ready(function() {
+$(document).ready(function() {
+
     $('.ui.sidebar')
       .sidebar('attach events', '.launch.button')
     ;
@@ -12,30 +12,33 @@ $(document)
     $('.secondary.menu .item')
       .tab({
         history: false,
-    	context: '#menu-two'
-      	})
-    ;    
-	$('.ui.about.modal')
-	  .modal()
-	;
+    	  context: '#menu-two'
+      });    
+	  $('.ui.about.modal').modal();
 
 
 
 
     var validationRules = {
-        url: {
-          identifier  : 'url',
+        company: {
+          identifier  : 'company',
           rules: [
             {
               type   : 'empty',
-              prompt : 'Please enter any URL'
+              prompt : 'Please type a company name'
             },
+          ]
+        },
+        topic: {
+          identifier  : 'topic',
+          rules: [
             {
-              type   : 'url',
-              prompt : 'Please enter a valid URL'
-            }
+              type   : 'empty',
+              prompt : 'Please type a topic'
+            },
           ]
         }
+
       }
     ;
 
@@ -83,9 +86,4 @@ $(document)
 	   $(this).remove();//remove image if it fails to load// or what ever u want
 	});
 
-
-
-
-
-  })
-;
+});
