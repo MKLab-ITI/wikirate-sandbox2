@@ -1,8 +1,6 @@
 /*******************************
             Global
 *******************************/
-/*@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700');*/
-
 html,
 body {
   font-size: 15px;
@@ -18,7 +16,9 @@ body {
   text-rendering: optimizeLegibility;
   min-width: 320px;
 }
-
+.labels-group {
+  margin: 5px 0;
+}
 /*******************************
           UI Overrides
 *******************************/
@@ -27,6 +27,10 @@ img.extract:hover{border: 1px solid red;}
 
 .ui.header {
   font-family: 'Source Sans Pro', "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.ui.black.header {
+  color: #5C6166!important;
 }
 
 .ui.header,
@@ -63,6 +67,17 @@ a:hover {
 
 p a {
   font-weight: bold;
+}
+
+.ui.form .field>label {
+  margin: 0 0 .3em;
+  display: block;
+  color: #555;
+  font-size: .875em;
+}
+.ui.message {
+  color: #555;
+
 }
 
 /*******************************

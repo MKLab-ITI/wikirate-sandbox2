@@ -12,11 +12,15 @@
 
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
   
-  <link rel="stylesheet" type="text/css" href="semantic-ui/css/semantic.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="semantic-ui/css/semantic.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="dist/semantic.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-  <script src="semantic-ui/javascript/semantic.min.js"></script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+  
+  <!-- <script src="semantic-ui/javascript/semantic.min.js"></script> -->
+  <script src="dist/semantic.min.js"></script>
   <script src="main.js"></script>
 
   
@@ -30,43 +34,36 @@
 
 
 	<div data-ng-controller="CompanyController as company"> 
-	  <div class="ui inverted page grid masthead segment">
+	  <div class="ui inverted masthead segment">
+	  	<div class="ui page grid">
 	    <div class="column">
-	      <div class="inverted secondary pointing ui menu">
-	      	<span class="ui teal tag label">Source recommendations</span>
-	      	<span class="ui red tag label">business-humanrights.org</span>
-	        <a class="header item floated right about">VISUALISATIONS</a>
-
-<!-- 	        <div class="right menu">
-	          <div class="ui top right pointing mobile dropdown link item">
-	            Menu
-	            <i class="dropdown icon"></i>
-	            <div class="menu">
-	              <a href="http://160.40.50./rockmongo" target="_blank" class="item">MongoDB</a>
-	              <a href=class="item">Solr</a>
-	              <a class="item">VIS</a>
+		    <div class="ui inverted secondary pointing menu">
+	          <div class="header item">v0.17</div>
+	          <span class="ui red tag label">business-humanrights.org</span>
+	          <div class="right menu">
+	            <div class="ui mobile dropdown link item">
+	              Visualisations
+	              <i class="dropdown icon"></i>
+	              <div class="menu">
+	                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Companies relations</a>
+	                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Companies overlaps</a>
+	                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Another one</a>
+	              </div>
+	            </div>
+	            <div class="ui dropdown link item">
+	              Visualisations
+	              <i class="dropdown icon"></i>
+	              <div class="menu">
+	                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Companies relations</a>
+	                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Companies overlaps</a>
+	                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Another one</a>
+	              </div>
 	            </div>
 	          </div>
-	          <div class="ui dropdown link item">
-	            MongoDB
-	            <i class="dropdown icon"></i>
-	            <div class="menu">
-	              <a href="http://160.40.50./rockmongo" target="_blank" class="item">Wikirate</a>
-	            </div>
-	          </div>
-	          <a class="item">Solr</a>
-	          <a class="item">Visual Indexing Service</a>
 	        </div>
- -->	        
-	      </div>
-	 
 	      <img src="images/sandbox.png" alt="A sandbox with an umbrella inside" class="ui medium image">
 	      <div class="ui hidden transition information">
-	        <h1 class="ui inverted header">
-	          Wikirate WP5 sandbox <span class="ui circular label">0.17</span>
-	        </h1>
-	            
-	        
+	        <h1 class="ui inverted header">Wikirate WP5 sandbox</h1>
 
 			<div class="ui fluid form">
 			  <div class="two fields">
@@ -79,29 +76,79 @@
 			      <input data-ng-model="company.formData.input_topic" name="topic" placeholder="Type a topic" type="text">
 			    </div>
 			  </div>
-			  <div class="positive ui button" data-ng-click="company.getItems()">Get recommendations</div>
-			  <img data-ng-hide="company.indicatorStopped" src="images/loading.gif" alt="loading indicator" />
+			  <div data-ng-class="company.indicatorStopped ? 'positive ui button' : 'positive ui button loading'" data-ng-click="company.getItems()"><i class="search icon"></i> Match company</div>
 			</div>
 
 
 	      </div>
 	    </div>
+	    </div>
+
+
 	  </div>
 
 
 	  <div id="menu-one" class="ui celled grid">
 	    <div class="row">
 	    <div class="eight wide middle column">
-	      <h2 class="ui header black center aligned"><i class="black url icon"></i> Matching companies</h2>
+	      <h2 class="ui header black center aligned"><i class="cloud icon"></i> Matching companies</h2>
 	      <div class="ui divider"></div>
 	      
-	      <p data-ng-repeat="item in company.items">{{item.Company_name}}</p>
 
+	      <div class="ui divided items" data-ng-show="company.items.length > 0">
+	        <div class="item" data-ng-repeat="item in company.items">
+	          <div class="ui tiny image">
+	            <img data-ng-src="{{item.Logo}}">
+	            <img data-ng-hide="item.Logo" data-ng-src="images/nophoto.png">
+	          	<div class="labels-group">
+	          		<div class="fluid ui mini basic red button">Metrics</div>
+	          	</div>
+	          </div>
+	          <div class="content">
+	            <div class="header">{{item.Company_name}}</div>
+	            <a data-ng-show="item.Company_Link" href="http://{{item.Company_Link}}" target="_blank" class="ui mini">{{item.Company_Link}}</a>
+	            <div class="meta">
+	              
+	              <div class="ui tiny green label" data-ng-repeat="alias in item.Aliases">
+	              	{{alias}}
+	              </div>
+	              <div class="labels-group" data-ng-show="item.Address">
+		              <div  class="ui tiny label">
+		              	{{item.Address}}
+		              </div>
+	              </div>	              
+	              <div class="labels-group" data-ng-show="item.Country">
+		              <div  class="ui tiny label">
+		              	{{item.Country}}
+		              </div>
+	              </div>
+	              
+	              <div class="labels-group" data-ng-show="item.Industry">
+		              <div  class="ui tiny orange label">
+		              	{{item.Industry}}
+		              </div>
+	              </div>
+
+	            </div>
+	            <div class="description">
+	              <p></p>
+	            </div>
+	            <div class="extra">
+		            <div class="ui right floated basic blue tiny button">
+		              Recommendations for {{company.formData.input_topic}}
+		              <i class="right chevron icon"></i>
+		            </div>
+	            </div>
+	          </div>
+	        </div>
+
+	      </div>
+	      
 	      <div class="ui icon message" data-ng-show="company.items.length == 0">
 	        <i class="info icon"></i>
 	      	<div class="content">			  
 	      	  <div class="header">
-	      	    Matching company names appear in this panel
+	      	    Matching companies appear in this panel
 	      	  </div>
 	        </div>
 	      </div>
@@ -109,7 +156,7 @@
 
 	    </div>
 	    <div class="eight wide right column">
-	      <h2 class="ui header black center aligned"><i class="black archive icon"></i> Recommended sources (company + source)</h2>
+	      <h2 class="ui header black center aligned"><i class="wizard icon"></i> Recommended sources</h2>
 	      <div class="ui divider"></div>
 
 <!-- 				<div style="text-align:center"><img data-ng-hide="searchIndicatorStopped" src="images/search_loading.gif" alt="loading indicator" /></div>
@@ -148,7 +195,7 @@
 				  <i class="info icon"></i>
 					<div class="content">			 
 					  <div class="header">
-					    Recommended sources appear in this panel
+					    Recommendations based on company+topic appear in this panel
 					  </div>
 				  </div>
 				</div>
@@ -164,38 +211,23 @@
 
 
 
-  <div class="ui inverted teal page grid segment">
-    <div class="sixteen wide column">
-      <div class="ui two column stackable grid">
-        <div class="column">
-          <p>WP5: Scalable Analytics for User Contributions<br />
-          &copy; 2015, Sandbox for Wikirate by <abbr title="Centre for Research and Technology - Hellas">CERTH</abbr> / <abbr title="Information Technologies Institute">ITI</abbr></p>
-        </div>
-        <div class="right floated aligned column">
+
+
+  <div class="ui inverted teal footer vertical segment">
+    <div class="ui stackable center aligned page grid">
+      <div class="sixteen wide column">
+        <div class="ui two column center aligned stackable grid">
+          <div class="column">
+            <h5 class="ui inverted header">WP5: Scalable Analytics for User Contributions</h5>
+            <p>&copy; 2015, Sandbox for Wikirate by <abbr title="Centre for Research and Technology - Hellas">CERTH</abbr> / <abbr title="Information Technologies Institute">ITI</abbr></p>
+          </div>
+          <div class="column">
 			<img src="images/wikirate_wp5.png" alt="The logo of wikirate project" />
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- About WP5 sandbox -->
-	<div class="ui about modal">
-	  <i class="close icon"></i>
-	  <div class="header">
-	    About Wikirate WP5 Sandbox
-	  </div>
-	  <div class="content">
-	  	<span class="ui circular black label">version 0.17</span>
-	  	<p>A testing platform to ensure the proper functionality of WP5 services prior to Wikirate incorporation by CERTH/ITI</p>
-	  	<p>A <a href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php">visulization of companies </a> from business-humanrights.org is under development</p>
-	  </div>
-	  <div class="actions">
-	    <div class="ui green button">OK</div>
-	  </div>
-	</div>
-
-
-
 
 </body>
 
