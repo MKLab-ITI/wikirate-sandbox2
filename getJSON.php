@@ -8,7 +8,7 @@
 	$server = 'http://160.40.51.30:8080/WikiRateAPI/';
 
 
-//http://160.40.51.30:8080/WikiRateAPI/Companies?fieldName=Company_name&fieldValue=Siemens
+	//http://160.40.51.30:8080/WikiRateAPI/Companies?fieldName=Company_name&fieldValue=Siemens
 
 
 	$action = array_key_exists('action', $_REQUEST) 
@@ -17,7 +17,7 @@
 
 	switch ($action) {
 		case 'recommendations':
-			$url = $server . 'Companies?fieldName=Company_name&fieldValue='.$_REQUEST['company'];
+			$url = $server . 'Companies?fieldName=Company_name&fieldValue='.urlencode($_REQUEST['company']);
 			break;
 		case 'statistics':
 			$url = $server . 'statistics';
@@ -47,7 +47,6 @@
 			break;
 
 	}
-
 	$json = file_get_contents($url);
 	echo $json;
 
