@@ -9,41 +9,18 @@
 
 
 	//http://160.40.51.30:8080/WikiRateAPI/Companies?fieldName=Company_name&fieldValue=Siemens
-
+  //http://160.40.51.30:8080/WikiRateAPI/HumanRightsArticles?ReferredCompany=552fd5ddebd4f7d398f545c8&Category=Labour
 
 	$action = array_key_exists('action', $_REQUEST) 
 	        ? $_REQUEST['action'] 
 	        : null;
 
 	switch ($action) {
-		case 'recommendations':
+		case 'companies':
 			$url = $server . 'Companies?fieldName=Company_name&fieldValue='.urlencode($_REQUEST['company']);
 			break;
-		case 'statistics':
-			$url = $server . 'statistics';
-			break;
-		case 'wikirateSources':
-			$url = 'http://wikirate.org/Sources_url.json?item=id_atom';
-			break;
-		case 'nearImage':
-			$url = $server . 'similar/media/url?url='.$_REQUEST['url'];
-			break;
-		case 'nearKeyword':
-			$q = $_REQUEST['q'];
-			$pieces = explode(" ", $q);
-			$comma_separated = implode(",", $pieces);
-			$url = $server . 'search/items?q='.$comma_separated;
-			break;
-		case 'addSource':
-			//type = {'Twitter', 'Facebook', 'Rss'}
-			$url = $server . 'source/add?type='.$_REQUEST['type'].'&source='.$_REQUEST['source'];
-			break;
-		case 'deleteSource':
-			//type = {'Twitter', 'Facebook', 'Rss'}
-			$url = $server . 'source/delete?type='.$_REQUEST['type'].'&source='.$_REQUEST['source'];
-			break;
-		case 'listSources':
-			$url = $server . 'source/list';
+		case 'recommendations':
+			$url = $server . 'HumanRightsArticles?ReferredCompany='.$_REQUEST['company_id'].'&Category='.urlencode($_REQUEST['topic']);
 			break;
 
 	}
@@ -60,9 +37,9 @@
 	http://wikirate.org/Sources_url.json?pretty=true&item=id_atom	
 
 
-ADD: http://160.40.50.207/wikirate/source/add?type=twitter&source=greeneconpost
-DEL: http://160.40.50.207/wikirate/source/delete?type=twitter&source=greeneconpost
-LIST: http://160.40.50.207/wikirate/source/list 
+	ADD: http://160.40.50.207/wikirate/source/add?type=twitter&source=greeneconpost
+	DEL: http://160.40.50.207/wikirate/source/delete?type=twitter&source=greeneconpost
+	LIST: http://160.40.50.207/wikirate/source/list 
 
 
 */

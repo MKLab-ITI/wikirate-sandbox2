@@ -74,7 +74,7 @@
 						      <input autocomplete="off" data-ng-model="company.formData.input_topic" name="topic" placeholder="Type a topic" type="text">
 						    </div>
 						  </div>
-						  <div data-ng-class="company.indicatorStopped ? 'positive ui button' : 'positive ui button loading'" data-ng-click="company.getItems()"><i class="search icon"></i> Match company</div>
+						  <div data-ng-class="company.indicatorStopped ? 'positive ui button' : 'positive ui button loading'" data-ng-click="company.getCompanies()"><i class="search icon"></i> Match company</div>
 						</div>
 
 		      </div>
@@ -84,7 +84,7 @@
 	  </div> <!-- masthead -->
 
 
-	  <div class="ui celled grid">
+	  <div class="ui celled grid" data-ng-controller="RecommendationController as recommendationCtrl">
 	    <div class="row">
 		    <div class="eight wide middle column">
 		      <h2 class="ui header black center aligned"><i class="cloud icon"></i> Matching companies</h2>
@@ -130,7 +130,8 @@
 		              <p></p>
 		            </div>
 		            <div class="extra">
-			            <div class="ui right floated basic blue tiny button">
+			            <div data-ng-class="recommendationCtrl.indicator == item.id? 'ui right floated basic blue tiny button loading' : 'ui right floated basic blue tiny button'" 
+			            	data-ng-click="recommendationCtrl.getRecommendations(item.id, item.Company_name, company.formData.input_topic)">
 			              Recommendations for {{company.formData.input_topic}}
 			              <i class="right chevron icon"></i>
 			            </div>
@@ -198,9 +199,9 @@
 
 		    </div>
 	    </div> <!-- row -->
-	  </div> <!-- grid -->
+	  </div> <!-- grid && RecommendationController-->
 
-	</div> <!-- controller -->
+	</div> <!-- CompanyController -->
 
   <div class="ui inverted teal footer vertical segment">
     <div class="ui stackable center aligned page grid">
