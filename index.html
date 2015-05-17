@@ -31,7 +31,7 @@
 <body id="home">
 
 	<div data-ng-controller="CompanyController as company"> 
-	  
+	<div data-ng-controller="RecommendationController as recommendationCtrl">  
 	  <div class="ui inverted masthead segment">
 	  	<div class="ui page grid">
 		    <div class="column">
@@ -74,7 +74,7 @@
 						      <input autocomplete="off" data-ng-model="company.formData.input_topic" name="topic" placeholder="Type a topic" type="text">
 						    </div>
 						  </div>
-						  <div data-ng-class="company.indicatorStopped ? 'positive ui button' : 'positive ui button loading'" data-ng-click="company.getCompanies()"><i class="search icon"></i> Match company</div>
+						  <div data-ng-class="company.indicatorStopped ? 'positive ui button' : 'positive ui button loading'" data-ng-click="recommendationCtrl.items=[] && company.getCompanies()"><i class="search icon"></i> Match company</div>
 						</div>
 
 		      </div>
@@ -84,7 +84,7 @@
 	  </div> <!-- masthead -->
 
 
-	  <div class="ui celled grid" data-ng-controller="RecommendationController as recommendationCtrl">
+	  <div class="ui celled grid">
 	    <div class="row">
 		    <div class="eight wide middle column">
 		      <h2 class="ui header black center aligned"><i class="cloud icon"></i> Matching companies</h2>
@@ -154,7 +154,17 @@
 		    <div class="eight wide right column">
 		      <h2 class="ui header black center aligned"><i class="wizard icon"></i> Recommended sources</h2>
 		      <div class="ui divider"></div>
+		      
 
+		      
+		      <span data-ng-show="recommendationCtrl.items.length > 0" class="ui blue tag label">
+		      	{{recommendationCtrl.selectedPair}}
+		      </span>
+
+
+		      <div class="item" data-ng-repeat="item in recommendationCtrl.items">
+		      	{{item.Publication_URL}}
+		      </div>
 					<!-- 
 					<div style="text-align:center"><img data-ng-hide="searchIndicatorStopped" src="images/search_loading.gif" alt="loading indicator" /></div>
 					<div class="mediaresults">
@@ -199,8 +209,9 @@
 
 		    </div>
 	    </div> <!-- row -->
-	  </div> <!-- grid && RecommendationController-->
+	  </div> <!-- grid -->
 
+	</div> <!-- RecommendationController -->
 	</div> <!-- CompanyController -->
 
   <div class="ui inverted teal footer vertical segment">

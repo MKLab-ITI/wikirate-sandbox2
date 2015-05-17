@@ -25,7 +25,8 @@
 
   app.controller('RecommendationController', ['$http', function($http){
     this.indicator = 0;  
-    
+    this.selectedPair = '';
+
     var recommendation = this;
     recommendation.items = [];
 
@@ -34,6 +35,7 @@
       $http.get('getJSON.php?action=recommendations&company_id='+company_id+'&topic='+topic)
         .success(function(data, status) {
           console.log(data);
+          recommendation.selectedPair = company_name + ' + '+ topic;
           recommendation.items = data;
           recommendation.indicator = 0;
         });
