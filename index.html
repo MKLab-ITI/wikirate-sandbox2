@@ -27,6 +27,47 @@
 
 	<div data-ng-controller="CompanyController as company"> 
 	<div data-ng-controller="RecommendationController as recommendationCtrl">  
+	<div data-ng-controller="MetricController as metricCtrl">  
+
+
+		<!-- metrics modal begins -->
+		<div class="ui modal">
+		  <i class="close icon"></i>
+		  <div class="header">
+		    Scraped data for {{metricCtrl.items[0].Company_name}}
+		  </div>
+		  <div class="content">
+		    <div class="ui tiny image">
+		      <img data-ng-src="{{metricCtrl.items[0].Logo}}">
+          <img data-ng-hide="metricCtrl.items[0].Logo" data-ng-src="images/nophoto.png">
+		    </div>
+		    <div class="description" style="height: 1000px;">
+		      <div class="ui header">
+		      	<div class="ui green circular label">{{metricCtrl.items[0].Snippets[0].length}} metrics</div>
+		      </div>
+
+		      <div class="ui divided selection list">	
+						<div class="ui item" data-ng-repeat="snippet in metricCtrl.items[0].Snippets[0]">
+							<div class="content">
+							<div class="ui right floated mini label"><a target="_blank" href="{{snippet.source}}">{{snippet.source_name}} {{snippet.citeyear}}</a></div>
+							<strong>{{snippet.name}}:</strong> <span class="ui blue">{{snippet.value}}</span>
+							</div>
+						</div>					      
+					</div>
+
+		    </div>
+		  </div>
+		  <div class="actions">
+		    <div class="ui positive right labeled icon button">
+		      Close
+		      <i class="checkmark icon"></i>
+		    </div>
+		  </div>
+		</div>					
+		<!-- metrics modal ends -->
+
+
+
 	  <div class="ui inverted masthead segment">
 	  	<div class="ui page grid">
 		    <div class="column">
@@ -92,7 +133,12 @@
 		            <img data-ng-src="{{item.Logo}}">
 		            <img data-ng-hide="item.Logo" data-ng-src="images/nophoto.png">
 		          	<div class="labels-group">
-		          		<div class="fluid ui mini basic red button">Metrics</div>
+
+		          		<div id="{{item.id}}" data-ng-class="metricCtrl.indicator == item.id? 'fluid ui mini basic red button metrics loading' : 'fluid ui mini basic red metrics button'" 
+		          			data-ng-click="metricCtrl.getMetrics(item.id)">
+		          		  Metrics
+		          		</div>
+
 		          	</div>
 		          </div>
 		          <div class="content">
@@ -140,7 +186,7 @@
 		        <i class="info icon"></i>
 		      	<div class="content">			  
 		      	  <div class="header">
-		      	    Matching companies appear in this panel
+		      	    Matching companies will appear in this panel
 		      	  </div>
 		        </div>
 		      </div>
@@ -182,12 +228,11 @@
 
 					</div>
 					
-
 					<div class="ui icon message" data-ng-show="recommendationCtrl.selectedPair == ''">
 					  <i class="info icon"></i>
 						<div class="content">			 
 						  <div class="header">
-						    Recommendations based on company+topic appear in this panel
+						    Recommendations based on company+topic will appear in this panel
 						  </div>
 					  </div>
 					</div>
@@ -196,6 +241,7 @@
 	    </div> <!-- row -->
 	  </div> <!-- grid -->
 
+	</div> <!-- MetricController -->
 	</div> <!-- RecommendationController -->
 	</div> <!-- CompanyController -->
 
