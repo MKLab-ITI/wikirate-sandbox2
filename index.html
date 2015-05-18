@@ -12,19 +12,14 @@
 
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
   
-  <!-- <link rel="stylesheet" type="text/css" href="semantic-ui/css/semantic.min.css"> -->
   <link rel="stylesheet" type="text/css" href="dist/semantic.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-  
-  <!-- <script src="semantic-ui/javascript/semantic.min.js"></script> -->
   <script src="dist/semantic.min.js"></script>
   <script src="main.js"></script>
 
-  
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.11/angular.min.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
   <script src="app.js"></script>
 </head>
@@ -43,18 +38,18 @@
 		              Visualisations
 		              <i class="dropdown icon"></i>
 		              <div class="menu">
-		                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Companies relations</a>
-		                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Companies overlaps</a>
-		                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Another one</a>
+		                <a class="item" href="http://160.40.51.30:8082/HumanRightsCompanies/" target="_blank">Companies Relations</a>
+		                <a class="item" href="http://160.40.51.30:8082/StatsGraph/" target="_blank">Overlapped Companies</a>
+		                <a class="item" href="http://160.40.51.30:8082/HumanRightsGraph/" target="_blank">Companies - Topics - Authors</a>
 		              </div>
 		            </div>
 		            <div class="ui dropdown link item">
 		              Visualisations
 		              <i class="dropdown icon"></i>
 		              <div class="menu">
-		                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Companies relations</a>
-		                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Companies overlaps</a>
-		                <a class="item" href="http://160.40.51.30:8082/CompaniesCoOccurrences/index_2.php" target="_blank">Another one</a>
+		                <a class="item" href="http://160.40.51.30:8082/HumanRightsCompanies/" target="_blank">Companies Relations</a>
+		                <a class="item" href="http://160.40.51.30:8082/StatsGraph/" target="_blank">Overlapped Companies</a>
+		                <a class="item" href="http://160.40.51.30:8082/HumanRightsGraph/" target="_blank">Companies - Topics - Authors</a>
 		              </div>
 		            </div>
 		          </div>
@@ -152,51 +147,41 @@
 
 		    </div>
 		    <div class="eight wide right column">
-		      <h2 class="ui header black center aligned"><i class="wizard icon"></i> Recommended sources</h2>
-		      <div class="ui divider"></div>
-		      
+					<h2 class="ui header black center aligned"><i class="wizard icon"></i> Filtered sources</h2>
+					<div class="ui divider"></div>
 
-		      
-		      <span data-ng-show="recommendationCtrl.items.length > 0" class="ui blue tag label">
-		      	{{recommendationCtrl.selectedPair}}
-		      </span>
+					<span data-ng-show="recommendationCtrl.items.length > 0" class="ui blue tag label">
+						{{recommendationCtrl.selectedPair}}
+					</span>
 
 
-		      <div class="item" data-ng-repeat="item in recommendationCtrl.items">
-		      	{{item.Publication_title}}
-		      </div>
-					<!-- 
-					<div style="text-align:center"><img data-ng-hide="searchIndicatorStopped" src="images/search_loading.gif" alt="loading indicator" /></div>
-					<div class="mediaresults">
-						<div class="ui divided selection list">
-						  <div class="item" data-ng-repeat="item in media">
-						  	<div class="right floated tiny inversed ui button"><a target="_blank" href="http://www.wikirate.org/{{item.name}}">See relative claim</a></div>							    
-						    <img class="ui small rounded image" data-ng-src="{{item.url}}">
-						    <div class="content">
-						      <div class="header">{{item.claimId}}</div>
-						    </div>
-						  </div>
+					<div class="ui accordion divided selection list" data-ng-show="recommendationCtrl.items.length > 0">
+
+						<div class="ui item" data-ng-repeat="item in recommendationCtrl.items">
+							<div class="title">
+								<div class="ui mini teal label">
+  								{{item.Publication_date}}
+								</div>
+								{{item.Publication_title}}
+							</div>
+							<div class="content">
+								<h4 class="ui header">Abstract</h4>
+								<p class="mini">{{item.Publication_text}}</p>
+								<h4 class="ui header">Details</h4>
+									<strong>Type:</strong> {{item.Publication_type}}<br />
+									<strong>Topic:</strong> <div class="ui mini orange label">{{item.Publication_category}}</div><br />
+									<strong>Author:</strong> {{item.Publication_author}}<br />
+									<strong>Origin:</strong> <a style="word-break:break-all;" href="{{item.Publication_URL}}">{{item.Publication_URL}}</a><br />
+									<strong>Citation:</strong> <a style="word-break:break-all;" href="{{item.Publication_citation}}">{{item.Publication_citation}}</a><br />
+								<h4 class="ui header">Related topics</h4>
+								<div class="ui mini orange label" data-ng-repeat="cat in item.Publication_related_categories track by $index">
+									{{cat}}
+								</div>
+							</div>
 						</div>
-					</div>
 
-					<div class="keywordsresults">
-						<div class="ui divided selection list">
-						  <div class="item" data-ng-repeat="item in keywords">
-							<div class="right floated tiny inversed ui button"><a target="_blank" href="http://www.wikirate.org/{{item.name}}">See relative claim/source</a></div>							    
-						    <i class="archive icon"></i>
-						    <div class="content">
-						      <div class="header"><span class="ui rounded label">{{item.id}}</span> {{item.title}}</div>
-							  <p>
-							  <div class="ui small images">
-							  	<img class="rounded ui image" data-ng-repeat="img in item.images" ng-src="{{img.url}}" />
-							  </div>						      
-							  </p>
-						      Original URL: <a target="_blank" href="{{item.url}}">{{item.url}}</a><br />
-						    </div>
-						  </div>
-						</div>
 					</div>
-	 				-->	
+					
 
 					<div class="ui icon message" data-ng-show="recommendationCtrl.selectedPair == ''">
 					  <i class="info icon"></i>
@@ -223,7 +208,7 @@
             <p>&copy; 2015, Sandbox for Wikirate by <abbr title="Centre for Research and Technology - Hellas">CERTH</abbr> / <abbr title="Information Technologies Institute">ITI</abbr></p>
           </div>
           <div class="column">
-			<img src="images/wikirate_wp5.png" alt="The logo of wikirate project" />
+						<img src="images/wikirate_wp5.png" alt="The logo of wikirate project" />
           </div>
         </div>
       </div>

@@ -3,7 +3,10 @@ $(document).ready(function() {
     $('.ui.dropdown')
       .dropdown()
     ;
-
+    
+    $('.ui.accordion')
+      .accordion()
+    ;
     var validationRules = {
         company: {
           identifier  : 'company',
