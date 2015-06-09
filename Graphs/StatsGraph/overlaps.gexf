@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2" xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd">
+  <meta lastmodifieddate="2014-01-30">
+    <creator>Gephi 0.8.1</creator>
+    <description></description>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static">
+    <attributes class="node" mode="static">
+            <attribute id="0" title="url" type="string"/>
+            <attribute id="1" title="numOfsnippets" type="float"/>
+            <attribute id="2" title="numOfCompanies" type="float">
+            </attribute>
+        </attributes>
+     <attributes class="edge">
+      <attribute id="0" title="overlap count" type="float"></attribute>
+    </attributes>       
+        <nodes>
+            <node id="0" label="Wikipedia" size="1602">
+                <attvalues>
+                    <attvalue for="0" value="http://en.wikipedia.org/"/>
+                    <attvalue for="1" value="21951"/>
+                    <attvalue for="2" value="1602"/>
+                </attvalues>
+                <viz:size value="1602"/>
+            </node>
+            
+            <node id="1" label="Forbes" size="1995">
+                <attvalues>
+                    <attvalue for="0" value="http://www.forbes.com/global2000/list/"/>
+                    <attvalue for="1" value="13826"/>
+                    <attvalue for="2" value="1995"/>
+                </attvalues>
+                <viz:size value="1995"/>
+            </node>
+            <node id="2" label="Peta_List" size="1727">
+                <attvalues>
+                    <attvalue for="0" value="http://features.peta.org/cruelty-free-company-search/index.aspx"/>
+                    <attvalue for="1" value="8040"/>
+                    <attvalue for="2" value="1727"/>
+                </attvalues>
+                <viz:size value="1727"/>
+            </node>
+            <node id="3" label="Newsweek" size="493">
+                <attvalues>
+                    <attvalue for="0" value="http://www.newsweek.com/green/worlds-greenest-companies-2014"/>
+                    <attvalue for="1" value="4854"/>
+                    <attvalue for="2" value="493"/>
+                </attvalues>
+                <viz:size value="493"/>
+            </node>
+            <node id="4" label="Ethical Guide" size="1162">
+                <attvalues>
+                    <attvalue for="0" value="http://guide.ethical.org.au/guide/browse/companies/"/>
+                    <attvalue for="1" value="4265"/>
+                    <attvalue for="2" value="1162"/>
+                </attvalues>
+                <viz:size value="1162"/>
+            </node>
+            <node id="5" label="Ethisphere" size="295">
+                <attvalues>
+                    <attvalue for="0" value="http://ethisphere.com/worlds-most-ethical/wme-honorees/"/>
+                    <attvalue for="1" value="1035"/>
+                    <attvalue for="2" value="295"/>
+                </attvalues>
+                <viz:size value="295"/>
+            </node>
+             <node id="6" label="GoodCompanyIndex" size="108">
+                <attvalues>
+                    <attvalue for="0" value="http://www.goodcompanyindex.com/good-company-index-quick-scores-2014/"/>
+                    <attvalue for="1" value="777"/>
+                    <attvalue for="2" value="108"/>
+                </attvalues>
+                <viz:size value="108"/>
+            </node>
+             <node id="7" label="Peri List" size="99">
+                <attvalues>
+                    <attvalue for="0" value="www.peri.umass.edu/toxicair_current/"/>
+                    <attvalue for="1" value="594"/>
+                    <attvalue for="2" value="99"/>
+                </attvalues>
+                <viz:size value="99"/>
+            </node>
+            <node id="8" label="Measure UP" size="55">
+                <attvalues>
+                    <attvalue for="0" value="http://www.measureup.org.uk/allcompanies/"/>
+                    <attvalue for="1" value="462"/>
+                    <attvalue for="2" value="55"/>
+                </attvalues>
+                <viz:size value="55"/>
+            </node>
+            <node id="9" label="NutritionIndex" size="21">
+                <attvalues>
+                    <attvalue for="0" value="http://www.accesstonutrition.org/global-index-2013"/>
+                    <attvalue for="1" value="462"/>
+                    <attvalue for="2" value="21"/>
+                </attvalues>
+                <viz:size value="21"/>
+            </node>
+            <node id="10" label="BSR Members" size="234">
+                <attvalues>
+                    <attvalue for="0" value="http://www.bsr.org/en/membership/member-list"/>
+                    <attvalue for="1" value="234"/>
+                    <attvalue for="2" value="234"/>
+                </attvalues>
+                <viz:size value="234"/>
+            </node>
+            <node id="11" label="Medicine Index" size="20">
+                <attvalues>
+                    <attvalue for="0" value="http://barabasilab.com"/>
+                    <attvalue for="1" value="140"/>
+                    <attvalue for="2" value="20"/>
+                </attvalues>
+                <viz:size value="20"/>
+            </node>
+            <node id="12" label="EICC Members" size="101">
+                <attvalues>
+                    <attvalue for="0" value="http://barabasilab.com"/>
+                    <attvalue for="1" value="101"/>
+                    <attvalue for="2" value="101"/>
+                </attvalues>
+                <viz:size value="101"/>
+            </node>
+            <node id="13" label="Fairlabor Members" size="44">
+                <attvalues>
+                    <attvalue for="0" value="http://www.fairlabor.org/affiliates/participating-companies"/>
+                    <attvalue for="1" value="88"/>
+                    <attvalue for="2" value="44"/>
+                </attvalues>
+                <viz:size value="44"/>
+            </node>
+            <node id="14" label="EPEAT Members" size="57">
+                <attvalues>
+                    <attvalue for="0" value="http://barabasilab.com"/>
+                    <attvalue for="1" value="57"/>
+                    <attvalue for="2" value="57"/>
+                </attvalues>
+                <viz:size value="57"/>
+            </node>                                                                   
+        </nodes>
+        <edges>
+            <edge id="0" source="0" target="1" weight="1376">
+                <attvalues>
+                    <attvalue for="0" value="1376"/>
+                </attvalues>
+            </edge>
+         
+            <edge id="1" source="0" target="2" weight="50">
+                <attvalues>
+                    <attvalue for="0" value="50"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="2" source="0" target="3" weight="398">
+                <attvalues>
+                    <attvalue for="0" value="398"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="3" source="0" target="4" weight="100">
+                <attvalues>
+                    <attvalue for="0" value="100"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="4" source="0" target="5" weight="195">
+                <attvalues>
+                    <attvalue for="0" value="195"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="5" source="0" target="6" weight="90">
+                <attvalues>
+                    <attvalue for="0" value="90"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="6" source="0" target="7" weight="57">
+                <attvalues>
+                    <attvalue for="0" value="57"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="7" source="0" target="8" weight="21">
+                <attvalues>
+                    <attvalue for="0" value="21"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="8" source="0" target="9" weight="15">
+                <attvalues>
+                    <attvalue for="0" value="15"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="9" source="0" target="10" weight="156">
+                <attvalues>
+                    <attvalue for="0" value="156"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="10" source="0" target="11" weight="16">
+                <attvalues>
+                    <attvalue for="0" value="16"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="11" source="0" target="12" weight="73">
+                <attvalues>
+                    <attvalue for="0" value="73"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="12" source="0" target="13" weight="12">
+                <attvalues>
+                    <attvalue for="0" value="12"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="13" source="0" target="14" weight="20">
+                <attvalues>
+                    <attvalue for="0" value="20"/>
+                </attvalues>
+            </edge>
+
+            <edge id="14" source="1" target="2" weight="24">
+                <attvalues>
+                    <attvalue for="0" value="24"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="15" source="1" target="3" weight="451">
+                <attvalues>
+                    <attvalue for="0" value="451"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="16" source="1" target="4" weight="108">
+                <attvalues>
+                    <attvalue for="0" value="108"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="17" source="1" target="5" weight="163">
+                <attvalues>
+                    <attvalue for="0" value="163"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="18" source="1" target="6" weight="101">
+                <attvalues>
+                    <attvalue for="0" value="101"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="19" source="1" target="7" weight="76">
+                <attvalues>
+                    <attvalue for="0" value="76"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="20" source="1" target="8" weight="5">
+                <attvalues>
+                    <attvalue for="0" value="5"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="21" source="1" target="9" weight="11">
+                <attvalues>
+                    <attvalue for="0" value="11"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="22" source="1" target="10" weight="142">
+                <attvalues>
+                    <attvalue for="0" value="142"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="23" source="1" target="11" weight="19">
+                <attvalues>
+                    <attvalue for="0" value="19"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="24" source="1" target="12" weight="50">
+                <attvalues>
+                    <attvalue for="0" value="50"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="25" source="1" target="13" weight="13">
+                <attvalues>
+                    <attvalue for="0" value="6"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="26" source="1" target="14" weight="19">
+                <attvalues>
+                    <attvalue for="0" value="19"/>
+                </attvalues>
+                </edge>
+
+            
+            <edge id="27" source="2" target="3" weight="16">
+                <attvalues>
+                    <attvalue for="0" value="16"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="28" source="2" target="4" weight="66">
+                <attvalues>
+                    <attvalue for="0" value="66"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="29" source="2" target="5" weight="13">
+                <attvalues>
+                    <attvalue for="0" value="13"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="30" source="2" target="6" weight="9">
+                <attvalues>
+                    <attvalue for="0" value="9"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="31" source="2" target="7" weight="1">
+                <attvalues>
+                    <attvalue for="0" value="1"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="32" source="2" target="8" weight="8">
+                <attvalues>
+                    <attvalue for="0" value="1"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="33" source="2" target="9" weight="1">
+                <attvalues>
+                    <attvalue for="0" value="1"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="34" source="2" target="10" weight="10">
+                <attvalues>
+                    <attvalue for="0" value="10"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="35" source="2" target="11" weight="5">
+                <attvalues>
+                    <attvalue for="0" value="5"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="37" source="2" target="13" weight="1">
+                <attvalues>
+                    <attvalue for="0" value="1"/>
+                </attvalues>
+            </edge>
+
+            <edge id="39" source="3" target="4" weight="59">
+                <attvalues>
+                    <attvalue for="0" value="59"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="40" source="3" target="5" weight="87">
+                <attvalues>
+                    <attvalue for="0" value="87"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="41" source="3" target="6" weight="80">
+                <attvalues>
+                    <attvalue for="0" value="80"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="42" source="3" target="7" weight="44">
+                <attvalues>
+                    <attvalue for="0" value="44"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="43" source="3" target="8" weight="2">
+                <attvalues>
+                    <attvalue for="0" value="2"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="44" source="3" target="9" weight="6">
+                <attvalues>
+                    <attvalue for="0" value="6"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="45" source="3" target="10" weight="90">
+                <attvalues>
+                    <attvalue for="0" value="90"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="46" source="3" target="11" weight="16">
+                <attvalues>
+                    <attvalue for="0" value="16"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="47" source="3" target="12" weight="19">
+                <attvalues>
+                    <attvalue for="0" value="19"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="48" source="3" target="13" weight="4">
+                <attvalues>
+                    <attvalue for="0" value="4"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="49" source="3" target="14" weight="6">
+                <attvalues>
+                    <attvalue for="0" value="6"/>
+                </attvalues>                
+            </edge>     
+
+            <edge id="50" source="4" target="5" weight="32">
+                <attvalues>
+                    <attvalue for="0" value="32"/>
+                </attvalues>
+            </edge>
+            <edge id="51" source="4" target="6" weight="17">
+                <attvalues>
+                    <attvalue for="0" value="17"/>
+                </attvalues>
+            </edge>
+            <edge id="52" source="4" target="7" weight="16">
+                <attvalues>
+                    <attvalue for="0" value="16"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="53" source="4" target="8" weight="8">
+                <attvalues>
+                    <attvalue for="0" value="7"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="54" source="4" target="9" weight="10">
+                <attvalues>
+                    <attvalue for="0" value="10"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="55" source="4" target="10" weight="43">
+                <attvalues>
+                    <attvalue for="0" value="43"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="56" source="4" target="11" weight="6">
+                <attvalues>
+                    <attvalue for="0" value="6"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="57" source="4" target="12" weight="3">
+                <attvalues>
+                    <attvalue for="0" value="3"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="58" source="4" target="13" weight="10">
+                <attvalues>
+                    <attvalue for="0" value="10"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="59" source="4" target="14" weight="2">
+                <attvalues>
+                    <attvalue for="0" value="2"/>
+                </attvalues>                
+            </edge>    
+
+             <edge id="60" source="5" target="6" weight="29">
+                <attvalues>
+                    <attvalue for="0" value="29"/>
+                </attvalues>
+            </edge>
+            <edge id="61" source="5" target="7" weight="20">
+                <attvalues>
+                    <attvalue for="0" value="20"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="62" source="5" target="8" weight="2">
+                <attvalues>
+                    <attvalue for="0" value="2"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="63" source="5" target="9" weight="8">
+                <attvalues>
+                    <attvalue for="0" value="8"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="64" source="5" target="10" weight="53">
+                <attvalues>
+                    <attvalue for="0" value="53"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="65" source="5" target="11" weight="3">
+                <attvalues>
+                    <attvalue for="0" value="3"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="66" source="5" target="12" weight="14">
+                <attvalues>
+                    <attvalue for="0" value="14"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="67" source="5" target="13" weight="4">
+                <attvalues>
+                    <attvalue for="0" value="4"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="68" source="5" target="14" weight="7">
+                <attvalues>
+                    <attvalue for="0" value="7"/>
+                </attvalues>                
+            </edge>   
+
+            <edge id="104" source="6" target="7" weight="22">
+                <attvalues>
+                    <attvalue for="0" value="22"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="70" source="6" target="9" weight="3">
+                <attvalues>
+                    <attvalue for="0" value="3"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="71" source="6" target="10" weight="28">
+                <attvalues>
+                    <attvalue for="0" value="28"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="72" source="6" target="11" weight="3">
+                <attvalues>
+                    <attvalue for="0" value="3"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="73" source="6" target="12" weight="11">
+                <attvalues>
+                    <attvalue for="0" value="11"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="74" source="6" target="13" weight="1">
+                <attvalues>
+                    <attvalue for="0" value="1"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="75" source="6" target="14" weight="4">
+                <attvalues>
+                    <attvalue for="0" value="4"/>
+                </attvalues>                
+            </edge>   
+            
+            <edge id="78" source="7" target="10" weight="14">
+                <attvalues>
+                    <attvalue for="0" value="14"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="80" source="7" target="12" weight="2">
+                <attvalues>
+                    <attvalue for="0" value="2"/>
+                </attvalues>
+            </edge>
+            <edge id="82" source="7" target="14" weight="1">
+                <attvalues>
+                    <attvalue for="0" value="1"/>
+                </attvalues>                
+            </edge>    
+
+            <edge id="84" source="8" target="10" weight="4">
+                <attvalues>
+                    <attvalue for="0" value="4"/>
+                </attvalues>
+            </edge> 
+            <edge id="87" source="8" target="13" weight="1">
+                <attvalues>
+                    <attvalue for="0" value="1"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="88" source="8" target="14" weight="1">
+                <attvalues>
+                    <attvalue for="0" value="1"/>
+                </attvalues>                
+            </edge> 
+                        
+            <edge id="89" source="9" target="10" weight="5">
+                <attvalues>
+                    <attvalue for="0" value="5"/>
+                </attvalues>
+            </edge>
+
+             <edge id="94" source="10" target="11" weight="13">
+                <attvalues>
+                    <attvalue for="0" value="13"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="95" source="10" target="12" weight="21">
+                <attvalues>
+                    <attvalue for="0" value="21"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="96" source="10" target="13" weight="3">
+                <attvalues>
+                    <attvalue for="0" value="3"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="97" source="10" target="14" weight="6">
+                <attvalues>
+                    <attvalue for="0" value="6"/>
+                </attvalues>                
+            </edge>  
+            <edge id="101" source="12" target="13" weight="1">
+                <attvalues>
+                    <attvalue for="0" value="1"/>
+                </attvalues>
+            </edge>
+            
+            <edge id="102" source="12" target="14" weight="14">
+                <attvalues>
+                    <attvalue for="0" value="14"/>
+                </attvalues>             
+            </edge>                                                                                                                 
+       </edges>
+    </graph>
+</gexf>
