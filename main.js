@@ -7,6 +7,12 @@ $(document).ready(function() {
     $('.ui.accordion')
       .accordion()
     ;
+    
+    $('#about').click(function(){
+      $('.ui.about.modal').modal('show');  
+    });
+    
+
 
     var validationRules = {
         company: {

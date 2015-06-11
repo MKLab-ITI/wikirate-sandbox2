@@ -52,10 +52,10 @@
       metric.indicator = company_id;
       $http.get('getJSON.php?action=metrics&company_id='+company_id)
         .success(function(data, status) {
-          console.log(data);
+          //console.log(data);
           metric.items = data;
           metric.indicator = 0;
-          $('.ui.modal').modal('show');
+          $('.ui.metrics.modal').modal('show');
         });      
     };
 

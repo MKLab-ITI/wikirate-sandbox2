@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="images/wikirate_logo.png" />
 
   <!-- Site Properities -->
-  <title>Wikirate :: WP5 Sandbox</title>
+  <title>WikiRate :: WP5 Sandbox</title>
 
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
   
@@ -31,7 +31,7 @@
 
 
 		<!-- metrics modal begins -->
-		<div class="ui modal">
+		<div class="ui metrics modal">
 		  <i class="close icon"></i>
 		  <div class="header">
 		    Scraped data for {{metricCtrl.items[0].Company_name}}
@@ -66,14 +66,13 @@
 		</div>					
 		<!-- metrics modal ends -->
 
-
-
 	  <div class="ui inverted masthead segment">
 	  	<div class="ui page grid">
 		    <div class="column">
 			    <div class="ui inverted secondary pointing menu">
 		          <div class="header item">v0.17</div>
 		          <span class="ui red tag label">business-humanrights.org</span>
+		          <a id="about" class="header item floated right about">About</a>
 		          <div class="right menu">
 		            <div class="ui mobile dropdown link item">
 		              Visualisations
@@ -97,17 +96,19 @@
 		        </div>
 		      <img src="images/sandbox.png" alt="A sandbox with an umbrella inside" class="ui medium image">
 		      <div class="ui hidden transition information">
-		        <h1 class="ui inverted header">Wikirate WP5 sandbox</h1>
+		        <h1 class="ui inverted header">WikiRate WP5 sandbox</h1>
 
 						<div class="ui fluid form">
 						  <div class="two fields">
 						    <div class="field">
 						      <label>Company</label>
 						      <input autocomplete="off" data-ng-model="company.formData.input_company" name="company" placeholder="Type a company name" type="text">
+						      (e.g. Twitter, BP)
 						    </div>
 						    <div class="field">
 						      <label>Topic</label>
 						      <input autocomplete="off" data-ng-model="company.formData.input_topic" name="topic" placeholder="Type a topic" type="text">
+						      (e.g. age discrimination, trafficking)	
 						    </div>
 						  </div>
 						  <div data-ng-class="company.indicatorStopped ? 'positive ui button' : 'positive ui button loading'" data-ng-click="recommendationCtrl.items=[] && company.getCompanies()"><i class="search icon"></i> Match company</div>
@@ -245,22 +246,38 @@
 	</div> <!-- RecommendationController -->
 	</div> <!-- CompanyController -->
 
-  <div class="ui inverted teal footer vertical segment">
-    <div class="ui stackable center aligned page grid">
-      <div class="sixteen wide column">
-        <div class="ui two column center aligned stackable grid">
-          <div class="column">
-            <h5 class="ui inverted header">WP5: Scalable Analytics for User Contributions</h5>
-            <p>&copy; 2015, Sandbox for Wikirate by <abbr title="Centre for Research and Technology - Hellas">CERTH</abbr> / <abbr title="Information Technologies Institute">ITI</abbr></p>
-          </div>
-          <div class="column">
-						<!-- <img src="images/wikirate_wp5.png" alt="The logo of wikirate project" /> -->
-						<h1 class="ui header" style="color: white;">Wiki<strong>Rate</strong> WP5</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="ui inverted teal footer vertical segment">
+		<div class="ui stackable center aligned page grid">
+		  <div class="sixteen wide column">
+		    <div class="ui two column center aligned stackable grid">
+		      <div class="column">
+		        <h5 class="ui inverted header">WP5: Scalable Analytics for User Contributions</h5>
+		        <p>&copy; 2015, Sandbox for Wikirate by <abbr title="Centre for Research and Technology - Hellas">CERTH</abbr> / <abbr title="Information Technologies Institute">ITI</abbr></p>
+		      </div>
+		      <div class="column">
+				<!-- <img src="images/wikirate_wp5.png" alt="The logo of wikirate project" /> -->
+				<h1 class="ui header" style="color: white;">Wiki<strong>Rate</strong> WP5</h1>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- About WP5 sandbox -->
+	<div class="ui about modal">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    Scalable Analytics for User Contributions :: WikiRate WP5 Sandbox2
+	  </div>
+	  <div class="content">
+	  	<p>The WikiRate Project has the vision of helping consumers express themselves as ethical economic citizens. The objective of WikiRate is to be the ‘go-to’ place for information on companies’ social and environmental practices, allowing consumers and stakeholders such as policymakers or the media to be better informed. Ultimately, the project will provide companies with additional incentive to act sustainably.</p>
+	  	<p><strong>Sandbox2</strong> is the frontend of the Intelligent Data Scraping Framework (IDSF). The purpose of IDSF is to enable WikiRate to be automatically populated with sources and ratings, scraped from known external, structured and relevant websites.</p>
+	  	<p>Sandbox2 was developed by Multimedia Knowledge and Social Media Analytics Laboratory of the Information Technologies Institute and it is currently supported by the European Commission’s Seventh Framework Programme, under grant agreement 609897</p>
+	  </div>
+	  <div class="actions">
+	    <div class="ui green button">OK</div>
+	  </div>
+	</div>
 
 </body>
 </html>
