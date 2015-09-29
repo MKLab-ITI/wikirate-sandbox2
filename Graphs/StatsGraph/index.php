@@ -228,7 +228,6 @@ document.addEventListener('mousemove', function(e){
                     nodes = s.graph.nodes(),
                     len = nodes.length,
                     edges = s.graph.edges();
-            
             for (i = 0; i < len; i++) {
                 nodes[i].x = Math.cos(Math.PI * 2 * i / len);
                 nodes[i].y = Math.sin(Math.PI * 2 * i / len);
@@ -261,8 +260,8 @@ document.addEventListener('mousemove', function(e){
       s.graph.nodes().forEach(function(n) {
         n.originalColor = n.color;
       });
-      var weights = new Array(15);
-      for (i=0; i<15; i++){
+      var weights = new Array(len);
+      for (i=0; i<len; i++){
          weights[i]= [];
          weights[i][i] = 0;
       }
@@ -271,8 +270,8 @@ document.addEventListener('mousemove', function(e){
          weights[e.target][e.source] = e.weight;
         e.originalColor = e.color;
       });
-      var topClosestNeighbors = new Array(15);
-      for (i=0; i<15; i++){
+      var topClosestNeighbors = new Array(len);
+      for (i=0; i<len; i++){
          var flag=0;
          topClosestNeighbors[i] = new Array(5);
          for (j=0; j<5; j++){
