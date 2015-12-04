@@ -5,7 +5,8 @@
 
 	//$server = 'http://160.40.50.207/wikirate/';
 	//$server = 'http://160.40.50.223/wikirate-sandbox/api/index.php/';
-	$server = 'http://160.40.51.30:8080/WikiRateAPI/';
+	$old_server = 'http://160.40.51.30:8080/WikiRateAPI/';
+	$server = 'http://160.40.51.30:8080/WikiRateAPI_NEW/';
 
 
 	//http://160.40.51.30:8080/WikiRateAPI/Companies?fieldName=Company_name&fieldValue=Siemens
@@ -21,7 +22,7 @@
 			$url = $server . 'Companies?fieldName=Company_name&fieldValue='.urlencode($_REQUEST['company']);
 			break;
 		case 'recommendations':
-			$url = $server . 'HumanRightsArticles?ReferredCompany='.$_REQUEST['company_id'].'&Category='.urlencode($_REQUEST['topic']);
+			$url = $old_server . 'Articles?ReferredCompany='.$_REQUEST['company_id'].'&Category='.urlencode($_REQUEST['topic']);
 			break;
 		case 'metrics':
 			$url = $server . 'Snippets?fieldName=id&fieldValue='.$_REQUEST['company_id'];

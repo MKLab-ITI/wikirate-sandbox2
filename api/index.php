@@ -1,6 +1,7 @@
 <?php 
 require 'vendor/autoload.php';
-$domain = 'http://160.40.51.30:8080/WikiRateAPI';
+$old_domain = 'http://160.40.51.30:8080/WikiRateAPI';
+$domain = 'http://160.40.51.30:8080/WikiRateAPI_NEW';
 
 $app = new \Slim\Slim(array(
     'debug' => false
@@ -39,7 +40,7 @@ $app->get('/snippets(/:fieldName(/:fieldValue))', function ($fieldName = null, $
 	echo $json;
 });
 
-$app->get('/articles(/:fieldName(/:fieldValue))', function ($fieldName = null, $fieldValue = null) use ($app, $domain) {
+$app->get('/articles(/:fieldName(/:fieldValue))', function ($fieldName = null, $fieldValue = null) use ($app, $old_domain) {
 	//create original URL
 	$arr = array(
 		'fieldName'   => is_null($fieldName) ? $app->request->params('fieldName') : $fieldName,
